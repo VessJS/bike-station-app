@@ -1,30 +1,24 @@
-<article class="row">
-  <div class="col-md-6">
+<article class="" *ngIf="station">
+  <div class="card col-md-6 mx-auto">
     <div class="card-header">
-      <agm-map [latitude]="latitude" [zoom]=16 [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+      <agm-map [latitude]=station.geometry.coordinates[1] [longitude]=station.geometry.coordinates[0] [zoom]=16>
         <agm-marker
-
-          [latitude]="latitude"
-          [longitude]="longitude"
-
-          *ngIf="locationChosen">
-
-
+          [latitude]=station.geometry.coordinates[1]
+          [longitude]=station.geometry.coordinates[0]>
         </agm-marker>
       </agm-map>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Nazwa stacji</h5>
-      <div class="row">
-        <p class="card-text col-6">Available Bikes</p>
-        <p class="card-text col-6">Available Places</p>
+      <h5 class="card-title">{{station.properties.label}}</h5>
+      <div class="row text-center">
+        <p class="col-6"><strong>Available Bikes</strong></p>
+        <p class="col-6"><strong>Available Places</strong></p>
       </div>
-      <div class="row">
-        <p class="col-6">LICZBA ROWERÓW</p>
-        <p class=" col-6">LICZBA MIEJSCA</p>
+      <div class="row text-center">
+        <p class="col-6 text-primary"><strong>{{station.properties.bikes}}</strong></p>
+        <p class="col-6">{{station.properties.bike_racks}}</p>
       </div>
-      <a routerLink="" class="btn btn-primary">Strona Główna</a>
+      <a routerLink="" class="btn btn-primary float-right">Strona Główna</a>
     </div>
   </div>
 </article>
-

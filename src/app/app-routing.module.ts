@@ -5,11 +5,11 @@ import {MapComponent} from './map/map.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   },
   {
-    path: 'map/:id', // TODO: podlinkować ID stacji/nazwę
+    path: 'map/:id',
     component: MapComponent
   },
   {path: '', redirectTo: '/home', pathMatch: 'full'},

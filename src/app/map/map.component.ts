@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 import {DataService} from "../data.service";
+import {IStations} from "../station";
 
 @Component({
   selector: 'app-map',
@@ -9,25 +10,26 @@ import {DataService} from "../data.service";
 })
 export class MapComponent implements OnInit {
 
+  public stations: IStations[] = [];
+  public station: IStations;
+
+
   constructor(private route: ActivatedRoute, private _dataService: DataService) {
-    this.route.params.subscribe(res => console.log(res.id));
   }
-
-  public mapPoints = [];
-
-  latitude: number = 52.406374;
-  longitude: number = 16.9251681;
-  locationChosen: boolean = false;
-
-  // onChoseLocation(event) {
-  //   this.latitude = event.coords.lat;
-  //   this.longitude = event.coords.lng;
-  //   this.locationChosen = true;
-  // }
 
   ngOnInit() {
-    this.mapPoints = this._dataService.getData();
-    console.log(this.mapPoints);
+    this._dataService.getStations()
+      .subscribe(data => {
+        this.stations = data["features"];
+        this.route.params.subscribe(res => {
+          for (let i = 0; i < this.stations.length; i++) {
+            if (this.stations[i].id === res.id) {
+              this.station = this.stations[i];
+              break
+            }
+          }
+          console.log("WE HAVE BEAUTIFUL DAY TODAY! ---- UPDATE TIME", this.station.properties.updated);
+        });
+      });
   }
-
 }

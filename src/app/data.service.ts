@@ -1,49 +1,20 @@
 import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs/Observable";
+
+import {IStations} from "./station";
 
 @Injectable()
 export class DataService {
+  //----------------- Properties -----------------
+  private url: string = "http://www.poznan.pl/mim/plan/map_service.html?mtype=pub_transport&co=stacje_rowerowe";
 
-  constructor() {
+  //----------------- Helper Methods -----------------
+  constructor(private _http: HttpClient) {
   }
 
-  getData() {
-    return [
-      {
-        geometry: {
-          coordinates: [
-            16.9116229,
-            52.4028313
-          ],
-          type: "Point"
-        },
-        id: "6157",
-        type: "Feature",
-        properties: {
-          free_racks: "2",
-          bikes: "16",
-          label: "Poznań Główny",
-          bike_racks: "18",
-          updated: "2018-03-20 18:56"
-        }
-      },
-      {
-        geometry: {
-          coordinates: [
-            16.9128835,
-            52.4105153
-          ],
-          type: "Point"
-        },
-        id: "6151",
-        type: "Feature",
-        properties: {
-          free_racks: "5",
-          bikes: "7",
-          label: "Most Teatralny",
-          bike_racks: "12",
-          updated: "2018-03-20 18:56"
-        }
-      }
-    ]
+  //----------------- Http Methods -----------------
+  getStations(): Observable<IStations[]> {
+    return this._http.get<IStations[]>(this.url);
   }
 }

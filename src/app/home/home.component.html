@@ -1,17 +1,18 @@
-<article class="row">
-  <div class="col-md-6">
-    <a class="card" routerLink="/map/66">
+<article class="col-md-6 col-xl-4 " *ngFor="let station of stations">
+  <div class="" routerLink="/map/{{ station.id }}">
+    <div class="card">
       <div class="card-body">
-        <h5 class="title">NAZWA STACJI</h5>
-        <div class="row">
-          <p class="card-text col-6">Available Bikes</p>
-          <p class="card-text col-6">Available Places</p>
+        <h5 class="card-title">{{station.properties.label}}</h5>
+        <div class="row text-center">
+          <p class="col-6"><strong>Available Bikes</strong></p>
+          <p class="col-6 "><strong>Available Places</strong></p>
         </div>
-        <div class="row">
-          <p class="col-6">LICZBA ROWERÓW</p>
-          <p class=" col-6">LICZBA MIEJSCA</p>
+        <div class="row text-center">
+          <p class="col-6 text-primary"><strong>{{ station.properties.bikes }}</strong></p>
+          <p class="col-6">{{ station.properties.bike_racks }}</p>
         </div>
       </div>
-    </a>
+    </div>
   </div>
 </article>
+
