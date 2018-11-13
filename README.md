@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
+![mobile app image](https://i.imgur.com/5FaXCma.png)
+![mobile app image](https://i.imgur.com/WzOYPXu.png)
+![desktop app image](https://i.imgur.com/AvuxSjT.png)
+![desktop app image](https://i.imgur.com/MgOUxAS.png)
+
+## Install
+
+Run `npm install` to install all dependencies.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
