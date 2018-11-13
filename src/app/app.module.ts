@@ -24,7 +24,7 @@ import {DataService} from "./data.service";
     AppRoutingModule,
     AgmCoreModule.forRoot(
       {
-        apiKey: "AIzaSyBWFaTejXoegCW7sukJyhc7mBvbc3ojjJI"
+        apiKey: "AIzaSyBKxGsRgfzdgxZNP3Hv-JiUigBHIGmnisM"
       })
   ],
 
